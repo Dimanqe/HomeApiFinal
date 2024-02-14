@@ -29,9 +29,6 @@ namespace HomeApi.Data.Repos
                 .ToArrayAsync();
         }
 
-
-
-
         /// <summary>
         ///  Найти комнату по имени
         /// </summary>
@@ -48,13 +45,11 @@ namespace HomeApi.Data.Repos
             var entry = _context.Entry(room);
             if (entry.State == EntityState.Detached)
                 await _context.Rooms.AddAsync(room);
-
             await _context.SaveChangesAsync();
         }
       
         public async Task UpdateRoom(Room room, UpdateRoomQuery query)
         {
-
             // Если в запрос переданы параметры для обновления - проверяем их на null
             //И если нужно - обновляем комнату
             if (!string.IsNullOrEmpty(query.NewName))
@@ -73,9 +68,7 @@ namespace HomeApi.Data.Repos
 
             // Сохраняем изменения в базе 
             await _context.SaveChangesAsync();
-        }
-
-        
+        }        
 
         public async Task<Room> GetRoomById(Guid id)
         {

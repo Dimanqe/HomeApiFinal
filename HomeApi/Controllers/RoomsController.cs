@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using AutoMapper;
-using HomeApi.Contracts.Models.Devices;
+﻿using AutoMapper;
 using HomeApi.Contracts.Models.Rooms;
 using HomeApi.Data.Models;
 using HomeApi.Data.Queries;
 using HomeApi.Data.Repos;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace HomeApi.Controllers
 {
@@ -27,7 +26,6 @@ namespace HomeApi.Controllers
         }
 
         //TODO: Задание - добавить метод на получение всех существующих комнат
-
         /// <summary>
         /// Получение комнат
         /// </summary>
@@ -73,7 +71,6 @@ namespace HomeApi.Controllers
             [FromRoute] Guid id,
             [FromBody] UpdateRoomRequest request)
         {
-
             var room = await _repository.GetRoomById(id);
             if (room == null)
                 return StatusCode(400, $"Ошибка: Комнаты с идентификатором {id} не существует.");
@@ -85,9 +82,6 @@ namespace HomeApi.Controllers
 
             return StatusCode(200, $"Комната обновлена! Имя - {room.Name}, Площадь - {room.Area},  Наличие газа - {room.GasConnected}, Напряжение - {room.Voltage}");
         }
-
-
-
 
     }
 }
